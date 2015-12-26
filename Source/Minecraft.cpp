@@ -46,6 +46,8 @@ void Minecraft::run()
 
 				if (strcmp(cmd, "stop") == 0)
 					break;
+				else
+					netServerHandler->_displayGameMessage("server", cmd);
 			}
 		}
 	}
@@ -53,7 +55,7 @@ void Minecraft::run()
 
 void Minecraft::hostMultiplayer(int port, int players)
 {
-	netServerHandler = new NetServerHandler(raknet, packetSender);
+	netServerHandler = new NetServerHandler(NULL, NULL, raknet, packetSender);
 
 	raknet->host(port, players);
 	raknet->announceServer(name);

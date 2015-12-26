@@ -1,18 +1,19 @@
 #include <sstream>
 #include <memory>
 
-#include "RakNetInstance.h"
+#include "network/RakNetInstance.h"
+
 #include "RakPeerInterface.h"
+
 #include "BitStream.h"
-
 #include "RakSleep.h"
-
 #include "MessageIdentifiers.h"
-#include "PacketEnumeration.h"
-#include "NetworkStructures.h"
 
-#include "MinecraftPackets.h"
-#include "NetServerHandler.h"
+#include "network/PacketEnumeration.h"
+#include "network/NetworkStructures.h"
+
+#include "network/MinecraftPackets.h"
+#include "network/NetServerHandler.h"
 
 #include "SharedConstants.h"
 
@@ -81,7 +82,11 @@ void RakNetInstance::runEvents(NetServerHandler *handler)
 	for (p = server->Receive(); p; server->DeallocatePacket(p), p = server->Receive())
 	{
 		int packetID = p->data[0];
-		if (packetID == ID_NEW_INCOMING_CONNECTION)
+		if (packetID == ID_UNCONNECTED_PING)
+		{
+			
+		}
+		else if (packetID == ID_NEW_INCOMING_CONNECTION)
 		{
 			handler->onNewClient(p->guid);
 		}
@@ -94,20 +99,20 @@ void RakNetInstance::runEvents(NetServerHandler *handler)
 			RakNet::BitStream bs(p->data, p->length, false);
 			bs.SetReadOffset(8);
 
-			printf("Packet ID: %d\n", packetID);
-
 			if (((char)packetID + 109) <= 108)
 			{
 				if (!handler->allowIncomingPacketId(p->guid, packetID - 142))
 					continue;
 			}
 
-			std::unique_ptr<Packet> packet = MinecraftPackets::createPacket(packetID);
-			if (packet)
+			std::unique_ptr<Packet> pk;
+			if (pk = MinecraftPackets::createPacket(packetID))
 			{
-				packet->read(&bs);
-				packet->handle(p->guid, handler);
+				pk->read(&bs);
+				pk->handle(p->guid, handler);
 			}
+			else
+				printf("Packet ID: %d\n", packetID);
 		}
 		else
 			printf("Unknown packet ID: %d\n", packetID);

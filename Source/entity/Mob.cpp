@@ -1,4 +1,4 @@
-#include "Mob.h"
+#include "entity/Mob.h"
 
 Mob::Mob(Level *level)
 	: Entity(level)

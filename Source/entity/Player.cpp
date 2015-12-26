@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "entity/Player.h"
 
 Player::Player(Level *level)
 	: Mob(level)

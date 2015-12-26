@@ -3,9 +3,9 @@
 #include "RakNetTypes.h"
 #include "BitStream.h"
 
-#include "NetworkStructures.h"
-#include "PacketEnumeration.h"
-#include "RakNetInstance.h"
+#include "network/NetworkStructures.h"
+#include "network/PacketEnumeration.h"
+#include "network/RakNetInstance.h"
 
 RakNetPacketSender::RakNetPacketSender(RakNetInstance *raknet)
 {
@@ -19,16 +19,7 @@ RakNetPacketSender::~RakNetPacketSender()
 
 void RakNetPacketSender::send(const Packet &packet)
 {
-	if (true)
-	{
-		RakNet::RakNetGUID guid;
-		_sendInternal(guid, packet, true);
-	}
-	else
-	{
-		RakNet::RakNetGUID guid;
-		_sendInternal(guid, packet, true);
-	}
+	_sendInternal(RakNet::UNASSIGNED_RAKNET_GUID, packet, true);
 }
 
 void RakNetPacketSender::send(const RakNet::RakNetGUID &guid, const Packet &packet)

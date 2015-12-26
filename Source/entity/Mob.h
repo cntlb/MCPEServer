@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "entity/Entity.h"
 
 class Mob :
 	public Entity

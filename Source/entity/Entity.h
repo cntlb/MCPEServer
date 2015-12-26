@@ -2,10 +2,10 @@
 
 #include <memory>
 
-#include "util\Vec2.h"
-#include "util\Vec3.h"
+#include "util/Vec2.h"
+#include "util/Vec3.h"
 
-#include "network\NetworkStructures.h"
+#include "network/NetworkStructures.h"
 
 class Dimension;
 class Level;

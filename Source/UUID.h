@@ -4,12 +4,12 @@
 
 namespace mce
 {
-class UUID
-{
-public:
-	long long part[2];
+	class UUID
+	{
+	public:
+		long long part[2];
 
-	void fromString(const std::string &);
-	std::string toString() const;
-};
+		void fromString(const std::string &);
+		std::string toString() const;
+	};
 };

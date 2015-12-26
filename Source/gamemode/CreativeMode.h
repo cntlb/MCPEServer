@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameMode.h"
+#include "gamemode/GameMode.h"
 
 class CreativeMode : public GameMode
 {
