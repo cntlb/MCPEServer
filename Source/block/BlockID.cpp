@@ -1,4 +1,4 @@
-#include "BlockID.h"
+﻿#include "BlockID.h"
 
 BlockID BlockID::AIR = BlockID(0);
 

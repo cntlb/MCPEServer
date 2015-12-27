@@ -1,4 +1,4 @@
-#include "network/packet/BatchPacket.h"
+﻿#include "network/packet/BatchPacket.h"
 #include "network/MinecraftPackets.h"
 
 #include "leveldb/zlib_compressor.h"

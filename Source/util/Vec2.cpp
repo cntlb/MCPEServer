@@ -1,4 +1,4 @@
-#include "util/Vec2.h"
+﻿#include "util/Vec2.h"
 
 Vec2::Vec2()
 {

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <vector>
 #include <memory>
@@ -6,6 +6,7 @@
 #include "level/BlockSourceListener.hpp"
 #include "level/Difficulty.h"
 #include "level/LevelStorage.h"
+#include "level/dimension/DimensionId.h"
 #include "entity/Player.h"
 #include "entity/EntityDamageSource.h"
 
@@ -46,6 +47,8 @@ public:
 
 	void removeEntity(std::unique_ptr<Entity> &&entity, bool);
 	void removeEntity(Entity &entity, bool);
+
+	Dimension *createDimension(DimensionId id);
 
 	Player *getPlayer(const std::string &username) const;
 	std::vector<std::unique_ptr<Player>> &getPlayers();

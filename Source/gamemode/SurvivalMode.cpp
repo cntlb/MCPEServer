@@ -1,4 +1,4 @@
-#include "gamemode/SurvivalMode.h"
+﻿#include "gamemode/SurvivalMode.h"
 
 SurvivalMode::SurvivalMode(PacketSender *packetSender, Level *level)
 	: GameMode(packetSender, level)

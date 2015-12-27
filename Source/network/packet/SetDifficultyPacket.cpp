@@ -1,4 +1,4 @@
-#include "network/packet/SetDifficultyPacket.h"
+﻿#include "network/packet/SetDifficultyPacket.h"
 
 #include "BitStream.h"
 

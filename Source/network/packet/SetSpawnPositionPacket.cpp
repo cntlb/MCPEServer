@@ -1,4 +1,4 @@
-#include "network/packet/SetSpawnPositionPacket.h"
+﻿#include "network/packet/SetSpawnPositionPacket.h"
 
 #include "BitStream.h"
 

@@ -1,4 +1,5 @@
-#include "level/Level.h"
+﻿#include "level/Level.h"
+#include "level/dimension/Dimension.h"
 
 Level::Level(std::unique_ptr<LevelStorage> storage, const std::string &levelName, const LevelSettings &settings, bool)
 {
@@ -88,6 +89,21 @@ void Level::removeEntity(std::unique_ptr<Entity> &&entity, bool)
 void Level::removeEntity(Entity &entity, bool)
 {
 
+}
+
+Dimension *Level::createDimension(DimensionId id)
+{
+	/*Dimension *dimension = getDimension();
+	if (!dimension)
+	{
+		std::unique_ptr<Dimension> dimensionPtr = Dimension::createNew(id, this);
+		dimension = dimensionPtr.get();
+
+
+	}
+
+	return dimension;*/
+	return NULL;
 }
 
 Player *Level::getPlayer(const std::string &username) const

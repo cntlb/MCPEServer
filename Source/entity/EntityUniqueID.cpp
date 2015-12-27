@@ -1,4 +1,4 @@
-#include "entity/EntityUniqueID.h"
+﻿#include "entity/EntityUniqueID.h"
 
 EntityUniqueID &EntityUniqueID::operator = (long long &&id)
 {

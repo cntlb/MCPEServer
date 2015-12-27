@@ -1,4 +1,4 @@
-#include "util/Color.h"
+﻿#include "util/Color.h"
 
 const Color Color::BLACK = Color(1.0f, 1.0f, 1.0f, 1.0f);
 const Color Color::BLUE = Color(0, 0, 1.0f, 1.0f);

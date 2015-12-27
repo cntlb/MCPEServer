@@ -1,4 +1,4 @@
-#include "util/Vec3.h"
+﻿#include "util/Vec3.h"
 
 Vec3::Vec3()
 {

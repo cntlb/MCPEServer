@@ -1,4 +1,4 @@
-#include "level/dimension/NormalDimension.h"
+﻿#include "level/dimension/NormalDimension.h"
 
 NormalDimension::NormalDimension(Level *level)
 	: Dimension(level, DIMENSION_NORMAL)

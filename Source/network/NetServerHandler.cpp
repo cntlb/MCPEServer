@@ -1,4 +1,4 @@
-#include "network/NetServerHandler.h"
+ï»¿#include "network/NetServerHandler.h"
 #include "network/PacketSender.h"
 
 #include "RakNetTypes.h"
@@ -122,7 +122,7 @@ void NetServerHandler::onDisconnect(const RakNet::RakNetGUID &guid, const std::s
 {
 	TextPacket pk;
 	pk.type = MESSAGE_TRANSLATION;
-	pk.message = "¡×e%multiplayer.player.left";
+	pk.message = "Â§e%multiplayer.player.left";
 	pk.params.push_back("Test");
 	sender->send(pk);
 }
@@ -182,7 +182,7 @@ void NetServerHandler::handle(const RakNet::RakNetGUID &guid, LoginPacket *packe
 
 	TextPacket pk;
 	pk.type = MESSAGE_TRANSLATION;
-	pk.message = "¡×e%multiplayer.player.joined";
+	pk.message = "Â§e%multiplayer.player.joined";
 	pk.params.push_back(packet->username);
 	sender->send(pk);
 
@@ -193,11 +193,18 @@ void NetServerHandler::sendLoginMessageLocal(const RakNet::RakNetGUID &guid, Log
 {
 	//std::unique_ptr<Player> player_ptr = createNewPlayer(guid, packet);
 	//Player *player = player_ptr.get();
+	Player *player = NULL;
 
+	//Dimension *dimension = player->getDimension();
+	//if (!dimension)
+	//	dimension = level->createDimension(DIMENSION_NORMAL);
 
+	//player->prepareRegion(*dimension->getChunkSource());
+	_sendLevelData(player, guid);
 
-	_sendLevelData(NULL, guid);
-	_sendAdditionalLevelData(NULL, guid);
+	//level->addPlayer(std::move(player_ptr));
+
+	_sendAdditionalLevelData(player, guid);
 
 	printf("[DEBUG] Player with \"%s\" spawned!\n", packet->username.c_str());
 }

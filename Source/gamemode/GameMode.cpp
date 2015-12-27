@@ -1,4 +1,4 @@
-#include "gamemode/GameMode.h"
+﻿#include "gamemode/GameMode.h"
 
 GameMode::GameMode(PacketSender *packetSender, Level *level)
 {

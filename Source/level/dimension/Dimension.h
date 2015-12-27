@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <string>
 #include <memory>
@@ -39,9 +39,9 @@ public:
 
 	std::unique_ptr<ChunkSource> _createGenerator(GeneratorType type);
 
-	virtual void onBlockChanged(BlockSource &, BlockPos const &, FullBlock, FullBlock, int);
-	virtual void onBlockEvent(BlockSource &, int, int, int, int, int);
-	virtual void onNewChunkFor(Player &, LevelChunk &);
+	virtual void onBlockChanged(BlockSource &region, BlockPos const &pos, FullBlock oldBlock, FullBlock newBlock, int update);
+	virtual void onBlockEvent(BlockSource &region, int, int, int, int, int);
+	virtual void onNewChunkFor(Player &player, LevelChunk &chunk);
 
 	virtual void init();
 
@@ -67,13 +67,13 @@ public:
 
 	virtual std::string getName() const = 0;
 
-	virtual void load(const CompoundTag &);
-	virtual void save(CompoundTag &);
+	virtual void load(const CompoundTag &tag);
+	virtual void save(CompoundTag &tag);
 
 	virtual void sendDimensionPackets();
 	virtual void sendBroadcast(const Packet &packet, Player *player);
 
-	virtual void addMoveEntityPacket(const MoveEntityPacketData &);
+	virtual void addMoveEntityPacket(const MoveEntityPacketData &data);
 	virtual void addSetEntityMotionPacket(Entity &entity);
 
 	virtual void getTimeOfDay(int, float) const;

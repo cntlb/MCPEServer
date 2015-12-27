@@ -1,4 +1,4 @@
-#include "Minecraft.h"
+﻿#include "Minecraft.h"
 
 #include "network/RakNetInstance.h"
 #include "network/RakNetPacketSender.h"
@@ -14,7 +14,7 @@ Minecraft::Minecraft()
 	raknet = new RakNetInstance;
 	packetSender = new RakNetPacketSender(raknet);
 
-	setName("C++ Server!");
+	setName("\xED\x85\x8C\xEC\x8A\xA4\xED\x8A\xB8");
 	hostMultiplayer(19132, 10);
 }
 

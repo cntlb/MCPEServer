@@ -1,4 +1,4 @@
-#include "entity/Player.h"
+﻿#include "entity/Player.h"
 
 Player::Player(Level *level)
 	: Mob(level)
@@ -7,6 +7,11 @@ Player::Player(Level *level)
 }
 
 Player::~Player()
+{
+
+}
+
+void Player::prepareRegion(ChunkSource &chunkSource)
 {
 
 }

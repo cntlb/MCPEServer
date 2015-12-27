@@ -1,4 +1,4 @@
-#include "level/dimension/HellDimension.h"
+﻿#include "level/dimension/HellDimension.h"
 
 HellDimension::HellDimension(Level *level)
 	: Dimension(level, DIMENSION_HELL)

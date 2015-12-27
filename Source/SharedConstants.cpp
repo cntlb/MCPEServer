@@ -1,3 +1,3 @@
-#include "SharedConstants.h"
+﻿#include "SharedConstants.h"
 
 int SharedConstants::NetworkProtocolVersion = 38;
