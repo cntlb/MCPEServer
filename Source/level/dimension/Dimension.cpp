@@ -6,9 +6,9 @@
 std::unique_ptr<Dimension> Dimension::createNew(DimensionId id, Level *level)
 {
 	std::unique_ptr<Dimension> dimension;
-	if (id == DimensionId::NORMAL)
+	if (id == DIMENSION_NORMAL)
 		dimension = std::unique_ptr<Dimension>(new NormalDimension(level));
-	else if (id == DimensionId::HELL)
+	else if (id == DIMENSION_HELL)
 		dimension = std::unique_ptr<Dimension>(new HellDimension(level));
 
 	return dimension;

@@ -1,7 +1,7 @@
 #include "level/dimension/NormalDimension.h"
 
 NormalDimension::NormalDimension(Level *level)
-	: Dimension(level, DimensionId::NORMAL)
+	: Dimension(level, DIMENSION_NORMAL)
 {
 
 }

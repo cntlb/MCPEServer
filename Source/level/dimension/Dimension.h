@@ -8,9 +8,7 @@
 
 #include "level/dimension/DimensionId.h"
 #include "level/GeneratorType.h"
-
 #include "util/Color.h"
-
 #include "block/FullBlock.h"
 
 class Level;

@@ -46,8 +46,8 @@ void Minecraft::run()
 
 				if (strcmp(cmd, "stop") == 0)
 					break;
-				else
-					netServerHandler->_displayGameMessage("server", cmd);
+				else if (strlen(cmd) > 0)
+					netServerHandler->_displayGameMessage("console", cmd);
 			}
 		}
 	}

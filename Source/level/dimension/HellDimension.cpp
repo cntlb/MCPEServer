@@ -1,7 +1,7 @@
 #include "level/dimension/HellDimension.h"
 
 HellDimension::HellDimension(Level *level)
-	: Dimension(level, DimensionId::HELL)
+	: Dimension(level, DIMENSION_HELL)
 {
 
 }

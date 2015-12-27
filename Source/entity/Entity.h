@@ -5,7 +5,7 @@
 #include "util/Vec2.h"
 #include "util/Vec3.h"
 
-#include "network/NetworkStructures.h"
+#include "network/packet/Packet.h"
 
 class Dimension;
 class Level;

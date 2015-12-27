@@ -4,17 +4,14 @@
 #include "network/RakNetInstance.h"
 
 #include "RakPeerInterface.h"
-
 #include "BitStream.h"
 #include "RakSleep.h"
 #include "MessageIdentifiers.h"
 
-#include "network/PacketEnumeration.h"
-#include "network/NetworkStructures.h"
-
+#include "network/packet/PacketID.h"
+#include "network/packet/Packet.h"
 #include "network/MinecraftPackets.h"
 #include "network/NetServerHandler.h"
-
 #include "SharedConstants.h"
 
 RakNetInstance::RakNetInstance()
@@ -78,44 +75,44 @@ void RakNetInstance::runEvents(NetServerHandler *handler)
 {
 	RakSleep(30);
 
-	RakNet::Packet *p;
-	for (p = server->Receive(); p; server->DeallocatePacket(p), p = server->Receive())
+	RakNet::Packet *packet;
+	for (packet = server->Receive(); packet; server->DeallocatePacket(packet), packet = server->Receive())
 	{
-		int packetID = p->data[0];
-		if (packetID == ID_UNCONNECTED_PING)
+		unsigned char pkId = packet->data[0];
+		if (pkId == ID_UNCONNECTED_PING)
 		{
 			
 		}
-		else if (packetID == ID_NEW_INCOMING_CONNECTION)
+		else if (pkId == ID_NEW_INCOMING_CONNECTION)
 		{
-			handler->onNewClient(p->guid);
+			handler->onNewClient(packet->guid);
 		}
-		else if (packetID == ID_DISCONNECTION_NOTIFICATION)
+		else if (pkId == ID_DISCONNECTION_NOTIFICATION)
 		{
-			
+			handler->onDisconnect(packet->guid, "");
 		}
-		else if (packetID >= ID_MINECRAFT_PACKET)
+		else if (pkId >= PacketID::ID_MINECRAFT_PACKET)
 		{
-			RakNet::BitStream bs(p->data, p->length, false);
+			RakNet::BitStream bs(packet->data, packet->length, false);
 			bs.SetReadOffset(8);
 
-			if (((char)packetID + 109) <= 108)
+			if (((char)pkId + 109) <= 108)
 			{
-				if (!handler->allowIncomingPacketId(p->guid, packetID - 142))
+				if (!handler->allowIncomingPacketId(packet->guid, pkId - 142))
 					continue;
 			}
 
 			std::unique_ptr<Packet> pk;
-			if (pk = MinecraftPackets::createPacket(packetID))
+			if (pk = MinecraftPackets::createPacket(pkId))
 			{
 				pk->read(&bs);
-				pk->handle(p->guid, handler);
+				pk->handle(packet->guid, handler);
 			}
 			else
-				printf("Packet ID: %d\n", packetID);
+				printf("Packet ID: %d\n", pkId);
 		}
 		else
-			printf("Unknown packet ID: %d\n", packetID);
+			printf("Unknown packet ID: %d\n", pkId);
 	}
 }
 

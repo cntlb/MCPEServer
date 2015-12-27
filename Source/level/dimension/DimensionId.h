@@ -1,7 +1,7 @@
 #pragma once
 
-enum class DimensionId : char
+enum DimensionId
 {
-	NORMAL,
-	HELL
+	DIMENSION_NORMAL,
+	DIMENSION_HELL
 };

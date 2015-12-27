@@ -8,10 +8,13 @@
 class Util
 {
 public:
-	static std::string &toLower(std::string &str)
+	static std::string toLower(const std::string &str)
 	{
-		std::transform(str.begin(), str.end(), str.begin(), ::tolower);
-		return str;
+		std::string temp;
+		temp.resize(str.size());
+
+		std::transform(str.begin(), str.end(), temp.begin(), ::tolower);
+		return temp;
 	}
 
 	// trim from start

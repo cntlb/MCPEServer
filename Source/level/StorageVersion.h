@@ -1,6 +1,6 @@
 #pragma once
 
-enum StorageVersion
+enum class StorageVersion
 {
 
 };

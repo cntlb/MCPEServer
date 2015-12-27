@@ -2,7 +2,7 @@
 
 #include "MessageIdentifiers.h"
 
-enum PacketID
+enum PacketID : unsigned char
 {
 	ID_MINECRAFT_PACKET = ID_USER_PACKET_ENUM + 7,
 

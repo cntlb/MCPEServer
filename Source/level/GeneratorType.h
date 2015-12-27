@@ -1,9 +1,9 @@
 #pragma once
 
-enum class GeneratorType
+enum GeneratorType
 {
-	OLD,
-	NORMAL,
-	FLAT,
-	HELL
+	GENERATOR_OLD,
+	GENERATOR_INFINITE,
+	GENERATOR_FLAT,
+	GENERATOR_HELL
 };

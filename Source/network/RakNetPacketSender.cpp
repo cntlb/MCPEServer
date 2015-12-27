@@ -3,8 +3,9 @@
 #include "RakNetTypes.h"
 #include "BitStream.h"
 
-#include "network/NetworkStructures.h"
-#include "network/PacketEnumeration.h"
+#include "network/packet/Packet.h"
+#include "network/packet/BatchPacket.h"
+#include "network/packet/PacketID.h"
 #include "network/RakNetInstance.h"
 
 RakNetPacketSender::RakNetPacketSender(RakNetInstance *raknet)
@@ -42,9 +43,9 @@ void RakNetPacketSender::_sendInternal(const RakNet::AddressOrGUID &addressOrGUI
 	RakNet::BitStream bs;
 	packet.write(&bs);
 
-	if (packet.getId() == 4 || !packet.b1 || bs.GetNumberOfBytesUsed() < 256)
+	if (packet.getId() == 4 || !packet.b || bs.GetNumberOfBytesUsed() < 256)
 	{
-		raknet->sendRaw(bs, packet.priority, packet.reliability, addressOrGUID, broadcast, 0);
+		raknet->sendRaw(bs, (PacketPriority)packet.priority, (PacketReliability)packet.reliability, addressOrGUID, broadcast, 0);
 
 		if (packet.getId() != 4)
 		{
